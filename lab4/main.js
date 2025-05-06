@@ -47,9 +47,21 @@ var map = L.map("map-canvas", {
 
 // 2. aerial photo * not working at this moment (see Assignment)
 //    - can be switched on/off by toggle thru L.control.layers (see below in this script)
-var wms_aerial_url = "https://geodata1.nationaalgeoregister.nl/luchtfoto/wms?";
+//var wms_aerial_url = "https://geodata1.nationaalgeoregister.nl/luchtfoto/wms?";
+//var basemap_aerial = new L.tileLayer.wms(wms_aerial_url, {
+//  layers: ["luchtfoto_png"],
+//  styles: "",
+//  format: "image/png",
+//  transparent: true,
+//  pointerCursor: true,
+//});
+//basemap_aerial.getAttribution = function () {
+//  return 'Luchtfoto WMS <a href="https://www.kadaster.nl">Kadaster</a>.';
+//};
+
+var wms_aerial_url = "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?";
 var basemap_aerial = new L.tileLayer.wms(wms_aerial_url, {
-  layers: ["luchtfoto_png"],
+  layers: ["Actueel_ortho25"],
   styles: "",
   format: "image/png",
   transparent: true,
@@ -71,8 +83,31 @@ var sound = new L.tileLayer.wms(wms_sound_url, {
   pointerCursor: true,
 });
 
+var local_wms_url = "http://localhost:8080/geoserver/GEO1007_A2/wms?";
+var parcels = new L.tileLayer.wms(local_wms_url, {
+  layers: "GEO1007_A2:parcels",  
+  styles: "GEO1007_A2:ParcelSLD",
+  format: "image/png",           
+  transparent: true,             
+  attribution: "Stepan test",
+  pointerCursor: true            
+});
+
+var wms_ahn_url = "https://service.pdok.nl/rws/ahn/wms/v1_0?";
+var ahn = new L.tileLayer.wms(wms_ahn_url, {
+  layers: "dtm_05m",
+  styles: "",
+  format: "image/png",
+  transparent: true,
+  attribution: "metadata : https://www.nationaalgeoregister.nl/geonetwork/srv/dut/catalog.search#/metadata/2b087d2c-6a1c-4746-95c6-3d40bc4294f9",
+  pointerCursor: true,
+});
+
+
 var overlays = {
   "Road noise [WMS]": sound,
+  "Parcels [WMS]": parcels,
+  "Algemene Hoogte Bestand [WMS]": ahn,
 };
 
 var baseLayers = {

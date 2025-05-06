@@ -297,6 +297,11 @@ var allFunctions = function () {
       requestWMSmap(lat, lng);
     }
   });
+<<<<<<< Updated upstream
 }
+=======
+  };
+
+>>>>>>> Stashed changes
 document.addEventListener("DOMContentLoaded", allFunctions);
 

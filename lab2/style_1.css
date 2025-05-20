@@ -1,0 +1,23 @@
+body {
+  background: chartreuse;
+  width: 1000px;
+  margin: auto;
+}
+
+ol	{
+	border: 2px solid gray;
+}
+
+.first 	{
+	color: red;
+}
+
+.second	{
+	font-weight: bold;
+}
+
+p	{
+	border: 5px solid brown;
+	margin: 30px;
+}
+

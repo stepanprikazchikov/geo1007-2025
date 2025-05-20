@@ -135,15 +135,18 @@
     // mdv 2018 geoweb course: switch default osmbuildings vector layer off
     //osmb.addGeoJSONTiles('https://{s}.data.osmbuildings.org/0.2/anonymous/tile/{z}/{x}/{y}.json');
 
-    var url_wfs = 'https://varioscale.bk.tudelft.nl/geoserver/nl/ows?';
-    var featuretype = 'nl:building';
-    var geometryName = 'nl:the_geom';
+    // var url_wfs = 'https://varioscale.bk.tudelft.nl/geoserver/geo1007/ows?';
+    // var featuretype = 'geo1007:building';
+    // var geometryName = 'geo1007:the_geom';
+    var url_wfs = 'http://localhost:8080/geoserver/GEO1007_A3/wfs?';
+    var featuretype = 'GEO1007_A3:pand_2d_4326';
+    var geometryName = 'GEO1007_A3:the_geom';
     // These are the basic parameters for a WFS request 
     //var params = 'service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326';
     var params = 'service=WFS&version=1.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326';
     // also needed: specify the WFS feature type that you request from the WFS service
     params += '&typeName=' + featuretype;
-    // and the geometry property and the height (for on-the-fly extrusion by OSM)	
+    // and the geometry property and the height (for on-the-fly extrusion by OSM) 
     params += '&propertyName=' + geometryName + ',height';
     // and in this use case the bouwjaar (= year that building was constructed)
     params += ',bouwjaar';
